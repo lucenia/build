@@ -1,5 +1,18 @@
 #!/bin/bash -eu
 
+# Copyright Lucenia Inc.
+#
+# SPDX-License-Identifier: Apache-2.0.
+# 
+# The Lucenia Contributors require contributions made to
+# this file be licensed under the Apache-2.0 license or a
+# compatible open source license.
+
+# This script was written by @karlvr and available at the following
+# location: https://gist.github.com/karlvr/5a4321f9ddf193ceb122849f8fb806d1
+#
+# Modifications licensed under Apache-2.0.
+
 basedir="${1:-}" # The directory to start looking for poms from
 owner="${2:-}" # The owner username on GitHub
 repository="${3:-}" # The repository name on GitHub
