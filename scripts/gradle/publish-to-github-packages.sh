@@ -45,7 +45,7 @@ for pom in $(find "$basedir" \( -name '.nexus' \) -prune -false -o -name '*.pom'
 	javadoc="$dir/$artifact-$version-javadoc.jar"
 	pomfile="$dir/$artifact-$version.pom"
 
-	command="mvn -X -q org.apache.maven.plugins:maven-deploy-plugin:3.0.0-M1:deploy-file \
+	command="mvn -q org.apache.maven.plugins:maven-deploy-plugin:2.4:deploy-file \
 		-DrepositoryId=$serverid \
 		-Durl=https://maven.pkg.github.com/$owner/$repository"
 
