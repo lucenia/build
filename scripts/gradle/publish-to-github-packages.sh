@@ -44,7 +44,7 @@ for pom in $(find "$basedir" \( -name '.nexus' \) -prune -false -o -name '*.pom'
 	sources="$dir/$artifact-$version-sources.jar"
 	javadoc="$dir/$artifact-$version-javadoc.jar"
 	pomfile="$dir/$artifact-$version.pom"
-	token=$(env.ACCESS_TOKEN)
+	token=$env.ACCESS_TOKEN
 
 	echo "removing old package: $artifact"
 
