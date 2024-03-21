@@ -37,20 +37,22 @@ for pom in $(find "$basedir" \( -name '.nexus' \) -prune -false -o -name '*.pom'
 	if [ -f "$dir/.migrated-github-packages" ]; then
 		continue
 	fi
-
+    
 	version=$(basename $dir)
 	artifact=$(basename $(dirname $dir))
 	jar="$dir/$artifact-$version.jar"
 	sources="$dir/$artifact-$version-sources.jar"
 	javadoc="$dir/$artifact-$version-javadoc.jar"
 	pomfile="$dir/$artifact-$version.pom"
+	modfile="$dir/$artifact-$version.module"
+	group=$(cat $modfile | jq -r '.component.group')
 	token=$ACCESS_TOKEN
 
 	echo "removing old package: $artifact"
 
 	rmcommand="curl -L -X DELETE -H \"Accept: application/vnd.github+json\" \
 	        -H \"Authorization: Bearer $token\" -H \"X-GitHub-Api-Version: 2022-11-28\" \
-	        https://api.github.com/$owner/maven/$artifact"
+	        https://api.github.com/orgs/$owner/packages/maven/$group.$artifact"
 
 	echo "running command: $rmcommand"
 
