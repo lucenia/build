@@ -52,6 +52,8 @@ for pom in $(find "$basedir" \( -name '.nexus' \) -prune -false -o -name '*.pom'
 	        -H \"Authorization: Bearer $token\" -H \"X-GitHub-Api-Version: 2022-11-28\" \
 	        https://api.github.com/$owner/maven/$artifact"
 
+	echo "running command: $rmcommand"
+
 	eval $rmcommand	
 
 	command="mvn -e -q org.apache.maven.plugins:maven-deploy-plugin:2.4:deploy-file \
